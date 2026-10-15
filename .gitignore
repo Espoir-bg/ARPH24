@@ -1,0 +1,151 @@
+# =========================================================
+# ARPH24 — Git ignore rules
+# Racine du dépôt : ARPH24/
+# =========================================================
+
+# -------------------------
+# Dependencies and packages
+# -------------------------
+node_modules/
+.pnp/
+.pnp.*
+vendor/
+
+# Package-manager caches
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+
+# -------------------------
+# Environment variables
+# -------------------------
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Secrets and private credentials
+.secrets/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.jks
+*.keystore
+service-account*.json
+credentials*.json
+
+# -------------------------
+# Build and generated output
+# -------------------------
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.expo/
+.expo-shared/
+.turbo/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# -------------------------
+# Logs and diagnostics
+# -------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.*.json
+
+# -------------------------
+# Tests and browser tooling
+# -------------------------
+playwright-report/
+test-results/
+blob-report/
+cypress/videos/
+cypress/screenshots/
+
+# -------------------------
+# Local databases and data
+# -------------------------
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.dump
+*.bak
+local-data/
+uploads-local/
+
+# -------------------------
+# Mobile build artifacts
+# -------------------------
+android/.gradle/
+android/local.properties
+android/**/build/
+ios/Pods/
+ios/build/
+ios/DerivedData/
+*.ipa
+*.apk
+*.aab
+*.hprof
+
+# -------------------------
+# Containers and local volumes
+# -------------------------
+.docker/
+docker-data/
+volumes/
+
+# -------------------------
+# Operating systems
+# -------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100/
+.Trashes/
+Thumbs.db
+Desktop.ini
+
+# -------------------------
+# Editors and IDEs
+# -------------------------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.history/
+
+# -------------------------
+# Temporary files
+# -------------------------
+tmp/
+temp/
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# -------------------------
+# Local environment files
+# -------------------------
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
