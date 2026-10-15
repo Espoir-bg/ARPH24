@@ -1,0 +1,19 @@
+{
+  "name": "arph24",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ARPH24 - Application opérationnelle du propriétaire d'entreprise",
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "scripts": {
+    "dev:mobile": "pnpm --filter @arph24/mobile dev",
+    "dev:api": "pnpm --filter @arph24/api dev",
+    "dev:worker": "pnpm --filter @arph24/worker dev",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "pnpm -r --if-present lint",
+    "test": "pnpm -r --if-present test",
+    "build": "pnpm -r --if-present build"
+  }
+}
