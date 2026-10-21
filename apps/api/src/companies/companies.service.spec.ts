@@ -19,31 +19,45 @@ describe('CompaniesService', () => {
     );
   });
 
-  it('crée une entreprise pour le propriétaire authentifié', async () => {
-    prismaMock.company.create.mockResolvedValue({
-      id: 'company-1',
-      name: 'Entreprise de test',
-      sector: 'Technologie',
-      createdAt: new Date('2026-01-01T00:00:00.000Z'),
-    });
+  it('crée une entreprise avec un essai de 30 jours', async () => {
+    prismaMock.company.create.mockImplementation(
+      async ({ data }: { data: Record<string, unknown> }) => ({
+        id: 'company-1',
+        ...data,
+        createdAt: new Date(),
+      }),
+    );
+
+    const before = Date.now();
 
     await service.create('owner-1', {
       name: 'Entreprise de test',
       sector: 'Technologie',
     });
 
-    expect(prismaMock.company.create).toHaveBeenCalledWith(
-      expect.objectContaining({
-        data: expect.objectContaining({
-          ownerId: 'owner-1',
-          name: 'Entreprise de test',
-          sector: 'Technologie',
-        }),
-      }),
-    );
+    const after = Date.now();
+
+    const call = prismaMock.company.create.mock.calls[0][0];
+    const data = call.data as {
+      ownerId: string;
+      trialStartedAt: Date;
+      trialEndsAt: Date;
+      subscriptionStatus: string;
+    };
+
+    expect(data.ownerId).toBe('owner-1');
+    expect(data.subscriptionStatus).toBe('TRIALING');
+
+    expect(data.trialStartedAt.getTime()).toBeGreaterThanOrEqual(before);
+    expect(data.trialStartedAt.getTime()).toBeLessThanOrEqual(after);
+
+    const duration =
+      data.trialEndsAt.getTime() - data.trialStartedAt.getTime();
+
+    expect(duration).toBe(30 * 24 * 60 * 60 * 1000);
   });
 
-  it('filtre la liste par identifiant du propriétaire', async () => {
+  it('filtre les entreprises par propriétaire', async () => {
     prismaMock.company.findMany.mockResolvedValue([]);
 
     await service.findMine('owner-42');
