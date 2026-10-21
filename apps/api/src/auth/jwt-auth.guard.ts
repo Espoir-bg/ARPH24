@@ -5,9 +5,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import type { Request } from 'express';
 
-export interface AuthenticatedRequest extends Request {
+export interface AuthenticatedRequest {
+  headers: {
+    authorization?: string;
+  };
   user: {
     sub: string;
     email: string;
