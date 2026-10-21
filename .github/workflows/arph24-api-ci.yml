@@ -35,5 +35,8 @@ jobs:
       - name: Vérifier les types de l'API
         run: pnpm --filter @arph24/api typecheck
 
+      - name: Exécuter les tests de l'API
+        run: pnpm --filter @arph24/api test
+
       - name: Compiler l'API
         run: pnpm --filter @arph24/api build
