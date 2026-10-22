@@ -1,0 +1,14 @@
+.git
+.github
+node_modules
+**/node_modules
+**/dist
+**/coverage
+**/.env
+**/.env.*
+!.env.example
+!.env.template
+.pnpm-store
+.npm
+*.log
+.DS_Store
