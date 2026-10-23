@@ -23,4 +23,4 @@ ENV API_HOST=0.0.0.0
 
 EXPOSE 3000
 
-CMD ["node", "apps/api/dist/main.js"]
+CMD ["sh", "-c", "pnpm --filter @arph24/api prisma:deploy && node apps/api/dist/main.js"]
