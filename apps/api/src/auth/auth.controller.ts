@@ -19,24 +19,24 @@ export class AuthController {
   @Post('register')
   register(
     @Body()
-    body: {
+    body?: {
       email?: unknown;
       password?: unknown;
       fullName?: unknown;
     },
   ) {
-    return this.auth.register(body);
+    return this.auth.register(body ?? {});
   }
 
   @Post('login')
   login(
     @Body()
-    body: {
+    body?: {
       email?: unknown;
       password?: unknown;
     },
   ) {
-    return this.auth.login(body);
+    return this.auth.login(body ?? {});
   }
 
   @UseGuards(JwtAuthGuard)
